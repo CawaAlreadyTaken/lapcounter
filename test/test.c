@@ -117,7 +117,7 @@ void main(int argc, char **argv) {
 
         Primary_GPS_COORDS* primary_gps_coords_d = (Primary_GPS_COORDS*)malloc(sizeof(Primary_GPS_COORDS));
         deserialize_Primary_GPS_COORDS(buffer_primary_gps_coords, primary_gps_coords_d);
-        //printf("%f %f\n", primary_gps_coords_d->latitude, primary_gps_coords_d->longitude);
+        printf("%f %f\n", primary_gps_coords_d->latitude, primary_gps_coords_d->longitude);
         point.x = (double)primary_gps_coords_d->latitude;
         point.y = (double)primary_gps_coords_d->longitude;
         //printf("%lf, %lf\n", point.x, point.y);
