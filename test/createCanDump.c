@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     FILE *file = fopen("mattiaCoords.txt", "r");
     while (!feof(file)) {
         float lat, lon;
-        bytes_read = fscanf(file, "%f,%f\n", &lat, &lon);
+        bytes_read = fscanf(file, "%f %f\n", &lat, &lon);
         printf("%f, %f", lat, lon);
         uint8_t* buffer_primary_gps_coords = (uint8_t*)malloc(sizeof(Primary_GPS_COORDS));
         Primary_GPS_COORDS primary_gps_coords_s = { lat, lon };

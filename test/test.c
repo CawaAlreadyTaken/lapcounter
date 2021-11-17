@@ -89,7 +89,6 @@ void main(int argc, char **argv) {
         fprintf(stderr, "Tried to write on %s but failed. Is it on?\n", ifname1);
         return;
     }
-    printf("b\n");
 
     //printf("Wrote %d bytes to canbus.\n", nbytes);
     // to here
@@ -122,8 +121,8 @@ void main(int argc, char **argv) {
         point.x = (double)primary_gps_coords_d->latitude;
         point.y = (double)primary_gps_coords_d->longitude;
         //printf("%lf, %lf\n", point.x, point.y);
+        //printf("%lf, %lf\n", point.x, point.y);
         if (lc_eval_point(lp, &point)) {
-            printf("1\n");
             struct can_frame frameWrite;
             frameWrite.can_id  = 0x123;  //change this
             frameWrite.can_dlc = 5; // 1 for lap count, 4 for timestamp
@@ -133,8 +132,8 @@ void main(int argc, char **argv) {
             frameWrite.data[2] = 0x34;
             frameWrite.data[3] = 0x56;
             frameWrite.data[4] = 0x78;
-            nbytes = write(s, &frameWrite, sizeof(struct can_frame));
-            printf("BIP! ");
+            int nbytes = write(s, &frameWrite, sizeof(struct can_frame));
+            printf("BIP!\n");
 
         }
     }
