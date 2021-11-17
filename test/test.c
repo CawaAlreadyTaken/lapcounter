@@ -124,14 +124,10 @@ void main(int argc, char **argv) {
         //printf("%lf, %lf\n", point.x, point.y);
         if (lc_eval_point(lp, &point)) {
             struct can_frame frameWrite;
-            frameWrite.can_id  = 0x123;  //change this
-            frameWrite.can_dlc = 5; // 1 for lap count, 4 for timestamp
+            frameWrite.can_id  = 0x6A0;  //change this
+            frameWrite.can_dlc = 1; // 1 for lap count
             uint8_t lapCount = lp->laps_count;  //check if this overwrites data on frame
             frameWrite.data[0] = lapCount;
-            frameWrite.data[1] = 0x12;
-            frameWrite.data[2] = 0x34;
-            frameWrite.data[3] = 0x56;
-            frameWrite.data[4] = 0x78;
             int nbytes = write(s, &frameWrite, sizeof(struct can_frame));
             printf("BIP!\n");
 
